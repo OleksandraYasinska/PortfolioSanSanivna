@@ -1,0 +1,122 @@
+[
+    {
+      "title": "Numeric Game: Послідовність чисел",
+      "tags": ["JQuery", "JS", "Game-logic", "Logic-puzzle"],
+      "images": ["assets/images/projects/NumericGame/1.png","assets/images/projects/NumericGame/2.png","assets/images/projects/NumericGame/3.png","assets/images/projects/NumericGame/4.png","assets/images/projects/NumericGame/5.png","assets/images/projects/NumericGame/6.png"], 
+      "description": {
+        "ua": "  Numeric Game — це динамічна браузерна головоломка на швидкість та увагу, де гравцеві потрібно знаходити числа в правильному порядку на полі, що постійно зростає. Проєкт реалізує прогресивну систему рівнів, адаптивну ігрову логіку та механіки візуального відволікання для тренування концентрації.",
+        "en": "Numeric Game is a dynamic browser puzzle game for speed and attention, where the player needs to find numbers in the correct order on an ever-growing field. The project implements a progressive level system, adaptive game logic, and visual distraction mechanics to train concentration."
+      },
+      "github": "https://github.com/OleksandraYasinska/numeric_game",
+      "live": "https://oleksandrayasinska.github.io/numeric_game/"
+    },
+    {
+      "title": "Interactive 3D Business Card",
+      "images": ["assets/images/projects/Interactive-3D-business-card/1.png","assets/images/projects/Interactive-3D-business-card/2.png","assets/images/projects/Interactive-3D-business-card/3.png","assets/images/projects/Interactive-3D-business-card/4.png"], 
+      "tags": ["Glassmorphism", "Vanilla-js", "Particles-js", "3d-tilt"],
+      "description": {
+        "ua": "Interactive 3D Business Card — це сучасний вебсайт-візитка з використанням ефектів скломорфізму (glassmorphism), 3D-інтерактиву та динамічних частинок. Проєкт демонструє майстерність у створенні складних UI-ефектів на чистому CSS та JavaScript з акцентом на продуктивність та адаптивність.",
+        "en": "Interactive 3D Business Card is a modern website business card using glassmorphism effects, 3D interactivity and dynamic particles. The project demonstrates mastery in creating complex UI effects in pure CSS and JavaScript with an emphasis on performance and adaptability."
+      },
+      "github": "https://github.com/OleksandraYasinska/Interactive-3D-business-card",
+      "live": "https://oleksandrayasinska.github.io/Interactive-3D-business-card/"
+    },
+    {
+        "title": "Labyrinth: The Dark Maze",
+        "images": ["assets/images/projects/Labyrinth (The Dark Maze)/1.png","assets/images/projects/Labyrinth (The Dark Maze)/2.png","assets/images/projects/Labyrinth (The Dark Maze)/3.png","assets/images/projects/Labyrinth (The Dark Maze)/4.png"], 
+        "tags": ["Three.js", "Pointer Lock API", "Web Audio API"],
+        "description": {
+          "ua": "Labyrinth — це атмосферна 3D-гра у жанрі survival-horror, розроблена на базі двигуна Three.js. Гравцеві належить знайти вихід із процедурно генерованого лабіринту, покладаючись лише на свій ліхтарик та швидкість реакції.",
+          "en": "Labyrinth is an atmospheric 3D survival horror game built on the Three.js engine. The player must find a way out of a procedurally generated maze, relying only on their flashlight and reaction speed."
+        },
+        "github": "https://github.com/OleksandraYasinska/Labyrinth-Three.js-",
+        "live": "https://oleksandrayasinska.github.io/Labyrinth-Three.js-/"
+      },
+      {
+        "title": "NeoPomodoro Ambient",
+        "images": ["assets/images/projects/Pomodoro/Pomodoro1.png","assets/images/projects/Pomodoro/Pomodoro2.png","assets/images/projects/Pomodoro/Pomodoro3.png"], 
+        "tags": ["Pomodoro-timer", "JS", "PWA", "Web Audio"],
+        "description": {
+          "ua": "NeoPomodoro Ambient — це сучасний PWA-додаток для глибокої концентрації, що поєднує класичну техніку Pomodoro з кастомним мікшером фонових звуків. Проект реалізований на чистому JavaScript з використанням сучасних CSS-технологій для створення естетичного та продуктивного середовища.",
+          "en": "NeoPomodoro Ambient is a modern PWA for deep concentration that combines the classic Pomodoro technique with a custom background sound mixer. The project is implemented in pure JavaScript using modern CSS technologies to create an aesthetic and productive environment."
+        },
+        "github": "https://github.com/OleksandraYasinska/NeoPomodoro",
+        "live": "https://oleksandrayasinska.github.io/NeoPomodoro/"
+      },
+      {
+        "title": "Landing InventoryForecastPro",
+        "images": [
+          "assets/images/projects/InventoryForecastPro/1.png",
+          "assets/images/projects/InventoryForecastPro/2.png",
+          "assets/images/projects/InventoryForecastPro/3.png",
+          "assets/images/projects/InventoryForecastPro/4.png",
+          "assets/images/projects/InventoryForecastPro/5.png"
+        ],
+        "tags": ["Landing-page", "BEM-methodology"],
+        "description": {
+          "ua": "Landing Page: InventoryForecast Pro — адаптивна посадкова сторінка з сучасною версткою, складною сіткою контенту (Grid/Flexbox) та інтерактивними елементами. Проєкт демонструє навички роботи з BEM-методологією, бібліотеками анімацій та динамічним рендерингом даних через JS.",
+          "en": "Landing Page: InventoryForecast Pro is a responsive landing page with a modern layout, a complex grid of content (Grid/Flexbox), and interactive elements. The project demonstrates skills in working with BEM methodology, animation libraries, and dynamic data rendering via JS."
+        },
+        "github": "https://github.com/OleksandraYasinska/Landing_InventoryForecastPro",
+        "live": "https://oleksandrayasinska.github.io/Landing_InventoryForecastPro/"
+      },
+      {
+        "title": "InventoryForecastPro",
+        "images": [
+          "assets/images/projects/InventoryForecastPro/soft/1.png",
+          "assets/images/projects/InventoryForecastPro/soft/2.png",
+          "assets/images/projects/InventoryForecastPro/soft/3.png",
+          "assets/images/projects/InventoryForecastPro/soft/4.png",
+          "assets/images/projects/InventoryForecastPro/soft/5.png",
+          "assets/images/projects/InventoryForecastPro/soft/6.png",
+          "assets/images/projects/InventoryForecastPro/soft/7.png",
+          "assets/images/projects/InventoryForecastPro/soft/8.png",
+          "assets/images/projects/InventoryForecastPro/soft/9.png",
+          "assets/images/projects/InventoryForecastPro/soft/10.png"
+        ],
+        "tags": ["Flask", "React", "ML", "Forecast", "sqlalchemy"],
+        "description": {
+          "ua": "InventoryForecastPro — це повноцінна система управління запасами з інтегрованим прогнозуванням попиту на основі Prophet, автоматичним розрахунком ROP/EOQ та аналітичною панеллю KPI. Додаток підтримує multi-organization/multi-store, імпорт даних та звітність у CSV/PDF.",
+          "en": "InventoryForecastPro is a complete inventory management system with integrated Prophet-based demand forecasting, automatic ROP/EOQ calculation, and KPI dashboard. The application supports multi-organization/multi-store, data import, and CSV/PDF reporting."
+        },
+        "github": "https://github.com/OleksandraYasinska/InventoryForecastPro",
+        "live": null
+      },
+      {
+        "title": "",
+        "images": [
+          "assets/images/projects/puzzle-foto-game/1.png",
+          "assets/images/projects/puzzle-foto-game/2.png",
+          "assets/images/projects/puzzle-foto-game/3.png",
+          "assets/images/projects/puzzle-foto-game/4.png",
+          "assets/images/projects/puzzle-foto-game/5.png",
+          "assets/images/projects/puzzle-foto-game/6.png",
+          "assets/images/projects/puzzle-foto-game/7.png"
+        ],
+        "tags": ["game-development", "html5-canvas", "sortablejs", "puzzle-game", "localstorage"],
+        "description": {
+          "ua": "Сучасна адаптивна веб-гра ``Пазли`` на JavaScript з механікою обміну елементів, системою рекордів та можливістю завантаження власних зображень.",
+          "en": "A modern adaptive web game ``Puzzles`` based on JavaScript with element exchange mechanics, a record system, and the ability to upload your own images."
+        },
+        "github": "https://github.com/OleksandraYasinska/Puzzle-Master",
+        "live": "https://oleksandrayasinska.github.io/Puzzle-Master/"
+      },
+      {
+        "title": "3D Human Skeleton Anatomy Tutor",
+        "images": [
+          "assets/images/projects/anatomically skeleton/1.png",
+          "assets/images/projects/anatomically skeleton/2.png",
+          "assets/images/projects/anatomically skeleton/3.png",
+          "assets/images/projects/anatomically skeleton/4.png",
+          "assets/images/projects/anatomically skeleton/5.png"
+        ],
+        "tags": ["anatomy", "threejs", "webgl", "3d-model", "javascript"],
+        "description": {
+          "ua": "3D Human Skeleton Anatomy Tutor — це інтерактивний веб-додаток, створений для студентів-медиків та всіх, хто цікавиться анатомією людини. Проект дозволяє досліджувати 3D-модель скелета, вивчати назви кісток українською та латиною, а також перевіряти свої знання у режимі іспиту.",
+          "en": "3D Human Skeleton Anatomy Tutor is an interactive web application created for medical students and anyone interested in human anatomy. The project allows you to explore a 3D skeleton model, learn the names of bones in Ukrainian and Latin, and test your knowledge in exam mode."
+        },
+        "github": "https://github.com/OleksandraYasinska/3D-Human-Skeleton-Anatomy-Tutor",
+        "live": "https://oleksandrayasinska.github.io/3D-Human-Skeleton-Anatomy-Tutor/"
+      }
+  ]
+  

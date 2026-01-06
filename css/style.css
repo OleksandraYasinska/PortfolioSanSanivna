@@ -1,0 +1,849 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+   :root {
+    /* Colors */
+    --bg-color: #0b0d10;
+    --fg-color: #e7eaf0;
+    --muted-color: #9aa4b2;
+    --accent-color: #6cf2c2; /* Mint */
+    --accent-glow: rgba(108, 242, 194, 0.3);
+    --secondary-accent: #64d1ff; /* Cyan */
+    
+    /* UI Elements */
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(11, 13, 16, 0.8);
+    
+    /* Fonts */
+    --font-main: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    
+    /* Transitions */
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Виправляємо миготливий курсор/рамку при кліку на мобільних */
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Забороняємо виділення тексту для інтерактивних елементів */
+.logo, .nav__link, .btn, .lang-btn, .menu-toggle, .skill-card__number {
+    user-select: none;
+}
+
+canvas#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Фон на найнижчому рівні */
+    pointer-events: none;
+}
+
+main {
+    position: relative;
+    z-index: 2; /* Контент поверх фону */
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & BUTTONS
+   ========================================================================== */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.btn--primary {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
+   ========================================================================== */
+   .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.logo__name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+}
+
+/* Контейнер навігації для десктопа */
+.nav {
+    display: block; /* Переконаємось, що він видимий */
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--fg-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: var(--transition);
+    display: inline-block; /* Щоб посилання мали розмір */
+}
+
+.nav__link:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* Праві елементи (мови) */
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--fg-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    opacity: 0.4;
+    transition: var(--transition);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* Кнопка бургера (прихована на десктопі) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 1100;
+}
+
+.hamburger, .hamburger::before, .hamburger::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    position: absolute;
+    transition: var(--transition);
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+/* ==========================================================================
+   4. SECTIONS
+   ========================================================================== */
+section {
+    padding: 120px 8%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hero Section */
+.hero__title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero__name {
+    display: block;
+    color: var(--fg-color);
+}
+
+.hero__role {
+    display: block;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero__desc {
+    max-width: 600px;
+    font-size: 1.2rem;
+    color: var(--muted-color);
+    margin-bottom: 2.5rem;
+}
+
+/* About Section - Refined Version */
+.about__container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr; /* Зменшили частку колонки з фото */
+    gap: 100px;
+    align-items: center;
+}
+
+.about__image-area {
+    position: relative;
+    padding: 15px;
+    max-width: 380px; /* Обмеження ширини для компактності */
+    justify-self: center; /* Центрування в своїй колонці */
+}
+
+/* Рамка з нахилом */
+.about__image-deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent-color);
+    border-radius: 30px;
+    z-index: 0;
+    opacity: 0.2;
+    transform: rotate(-4deg);
+    transition: var(--transition);
+}
+
+.about__image-wrapper {
+    position: relative;
+    z-index: 1;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #000; /* Чорний фон для ефекту затемнення */
+    border: 1px solid var(--card-border);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Ефект затемнення та Ч/Б */
+.about__image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(50%) brightness(0.8); /* Повне ч/б та затемнення */
+    transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1), 
+                filter 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Ховер ефект */
+.about__image-area:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1); /* Повернення кольору та яскравості */
+}
+
+.about__image-area:hover .about__image-deco {
+    transform: rotate(0deg) scale(1.02);
+    opacity: 0.5;
+}
+
+/* Бейдж */
+.about__badge {
+    position: absolute;
+    bottom: 25px;
+    right: 5px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--accent-color);
+    padding: 10px 18px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    animation: float 4s ease-in-out infinite;
+}
+
+.about__badge-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* Оновлені стати */
+.about__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--card-border);
+}
+
+.stat-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+
+.stat-desc {
+    font-size: 0.75rem;
+    color: var(--muted-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Адаптація */
+@media (max-width: 992px) {
+    .about__container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .about__image-area {
+        max-width: 320px;
+    }
+    .about__stats {
+        grid-template-columns: 1fr 1fr; /* На планшетах у два ряди */
+        gap: 20px;
+    }
+}
+
+/* Skills Section */
+.skills__grid {
+    display: grid;
+    gap: 30px;
+    align-items: start;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 45px 35px;
+    border-radius: 35px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0; /* Для анімації GSAP */
+}
+
+/* --- ШАПКА КАРТКИ --- */
+.skill-card__header {
+    display: flex;
+    justify-content: space-between; /* Розносить номер вліво, заголовок вправо */
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Номер з рамкою, що підсвічується */
+.skill-card__number {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    border: 1px solid rgba(108, 242, 194, 0.3); /* Початкова рамка */
+    padding: 5px 12px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+/* Назва притиснута вправо */
+.skill-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    text-align: right; 
+    flex: 1; /* Займає вільний простір */
+    padding-left: 20px;
+}
+
+/* Опис вирівняний по лівому краю */
+.skill-card p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+    text-align: left; /* ПРИТИСНУТО ВЛІВО */
+    margin: 0;
+}
+
+/* --- ЕФЕКТИ НАВЕДЕННЯ (Hover) --- */
+.skill-card:hover {
+    transform: translateY(-12px) !important;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(108, 242, 194, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Підсвічування номера при наведенні на КАРТКУ */
+.skill-card:hover .skill-card__number {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(108, 242, 194, 0.3);
+}
+
+/* --- СТАБІЛЬНА АДАПТИВНА СІТКА --- */
+
+/* 1. Великі екрани (4 колонки) */
+@media (min-width: 1400px) {
+    .skills__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    /* Сходинки */
+    .skill-card:nth-child(4n+1) { margin-top: 0; }
+    .skill-card:nth-child(4n+2) { margin-top: 50px; }
+    .skill-card:nth-child(4n+3) { margin-top: 100px; }
+    .skill-card:nth-child(4n+4) { margin-top: 150px; }
+    
+    /* Корекція для 2-го ряду (підтягування вгору) */
+    .skill-card:nth-child(n+5) { margin-top: -100px; } 
+    .skill-card:nth-child(4n+6) { margin-top: -50px; }
+    .skill-card:nth-child(4n+7) { margin-top: 0; }
+    .skill-card:nth-child(4n+8) { margin-top: 50px; }
+}
+
+/* 2. Середні десктопи (3 колонки) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .skills__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .skill-card:nth-child(3n+1) { margin-top: 0; }
+    .skill-card:nth-child(3n+2) { margin-top: 70px; }
+    .skill-card:nth-child(3n+3) { margin-top: 140px; }
+
+    /* Підтяжка другого ряду */
+    .skill-card:nth-child(n+4) { margin-top: -70px; }
+    .skill-card:nth-child(3n+5) { margin-top: 0px; }
+    .skill-card:nth-child(3n+6) { margin-top: 70px; }
+}
+
+/* 3. Планшети (2 колонки) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .skills__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .skill-card:nth-child(2n+1) { margin-top: 0; }
+    .skill-card:nth-child(2n+2) { margin-top: 60px; }
+    
+    /* Підтяжка для 2 колонок */
+    .skill-card:nth-child(n+3) { margin-top: -20px; }
+    .skill-card:nth-child(2n+4) { margin-top: 40px; }
+}
+
+/* 4. Мобільні */
+@media (max-width: 767px) {
+    .skills__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .skill-card { margin-top: 0 !important; padding: 35px 25px; }
+    .skill-card h3 { font-size: 1.4rem; }
+}
+
+
+/* ==========================================
+   PROJECTS SECTION (Vertical Slider & Compact)
+   ========================================== */
+
+.projects-grid {
+    display: grid;
+    /* Трохи зменшили мінімальну ширину для кращої сітки */
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ВЕРТИКАЛЬНИЙ СЛАЙДЕР */
+.project-card__image {
+    width: 100%;
+    /* Співвідношення сторін ваших фото (ширина / висота) */
+    aspect-ratio: 1350 / 640; 
+    position: relative;
+    background: #0d0d0d;
+    overflow: hidden;
+}
+
+/* Контейнер для вертикального руху */
+.project-card__slider-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.project-card__slider-inner img {
+    width: 100%;
+    height: 100%; /* Картинка заповнює контейнер повністю */
+    flex-shrink: 0;
+    object-fit: cover; /* Гарантує заповнення без щілин */
+    filter: brightness(0.85);
+    transition: filter 0.4s ease;
+}
+
+.project-card:hover .project-card__slider-inner img {
+    filter: brightness(1);
+}
+
+/* Заглушка (Placeholder) */
+.project-card__placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-card__placeholder::after {
+    content: '🚀';
+    font-size: 2.5rem;
+    opacity: 0.2;
+}
+
+/* ВЕРТИКАЛЬНІ КРАПКИ (Справа) */
+.project-card__slider-dots {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 5;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent-color);
+    height: 12px; /* Подовжена активна крапка */
+    border-radius: 4px;
+}
+
+/* КОНТЕНТ (Компактний) */
+.project-card__info {
+    padding: 25px; /* Зменшили паддінг */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ТЕГИ */
+.project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: rgba(108, 242, 194, 0.08);
+    color: var(--accent-color);
+    border: 1px solid rgba(108, 242, 194, 0.2);
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem; /* Трохи менший шрифт */
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* КНОПКИ (Покращені) */
+.project-card__links {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-project {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-project--github {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-project--github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-project--live {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-project--live:hover {
+    box-shadow: 0 10px 20px rgba(108, 242, 194, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Ховер ефект картки */
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(108, 242, 194, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* АДАПТИВНІСТЬ */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card__links {
+        flex-direction: row; /* Залишаємо в ряд на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card__links {
+        flex-direction: column; /* Одна під одною на маленьких телефонах */
+    }
+}
+
+/* Contact Section */
+.contact__content {
+    max-width: 800px;
+}
+
+.contact__subtitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.contact__desc {
+    font-size: 1.2rem;
+    color: var(--muted-color);
+    margin-bottom: 2.5rem;
+}
+
+.contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact__btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    color: var(--fg-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.contact__btn:hover {
+    background: var(--fg-color);
+    color: var(--bg-color);
+    transform: translateY(-5px);
+}
+
+.contact__btn--telegram:hover {
+    background: #0088cc;
+    border-color: #0088cc;
+    color: #fff;
+}
+
+/* ==========================================================================
+   5. FOOTER
+   ========================================================================== */
+.footer {
+    padding: 60px 8%;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about__container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .about__image {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 1000;
+    }
+
+    .header.nav-open .nav {
+        transform: translateX(0);
+    }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .nav__link {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 100px 5vw;
+    }
+
+    .hero__title {
+        font-size: 2.8rem;
+    }
+    
+    .contact__links {
+        flex-direction: column;
+    }
+}

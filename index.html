@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasinska Olexandra | Web Developer</title>
+    
+    <meta name="description" content="Портфоліо Web Developer — Ясінська Олександра (SanSanivna).">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="no-cursor-blink">
+
+    <canvas id="bg"></canvas>
+
+    <header class="header">
+        <div class="logo">
+            <span class="logo__name">SanSanivna</span>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li><a href="#hero" class="nav__link" data-i18n="nav.home">Головна</a></li>
+                <li><a href="#about" class="nav__link" data-i18n="nav.about">Про мене</a></li>
+                <li><a href="#projects" class="nav__link" data-i18n="nav.projects">Проєкти</a></li>
+                <li><a href="#contact" class="nav__link" data-i18n="nav.contact">Контакти</a></li>
+            </ul>
+        </nav>
+
+        <div class="header__right">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ua">UA</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    <span class="hero__name">Ясінська Олександра</span>
+                    <span class="hero__role">Web Developer</span>
+                </h1>
+                <p class="hero__desc" data-i18n="hero.text">
+                    Створюю сучасні веб-сторінки та інтерактивні веб-ігри з фокусом на анімацію та UX.
+                </p>
+                <div class="hero__cta">
+                    <a href="#projects" class="btn btn--primary" data-i18n="hero.cta">Дивитись роботи</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2 class="section-title" data-i18n="about.title">Про мене</h2>
+            <div class="about__container">
+                <div class="about__image-area">
+                    <div class="about__image-deco"></div>
+                    <div class="about__image-wrapper">
+                        <img src="assets/images/my-photo.png" alt="Yasinska Olexandra">
+                        <div class="about__badge">
+                            <!--<span class="about__badge-icon">🚀</span>-->
+                            <span class="about__badge-text">Available for work</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="about__content">
+                    <div class="about__text-block">
+                        <p class="about__text" data-i18n="about.text_1">
+                            Привіт! Я веб-розробниця, яка обожнює поєднання чистого коду та креативного дизайну. Моя подорож у світ IT почалася з глибокого вивчення інженерії програмного забезпечення.
+                        </p>
+                        <p class="about__text" data-i18n="about.text_2">
+                            Зараз я фокусуюсь на створенні інтерактивних інтерфейсів та браузерних ігор. Мені подобається оживляти статичні макети за допомогою анімацій, які роблять взаємодію з користувачем цікавою та зрозумілою.
+                        </p>
+                    </div>
+        
+                    <div class="about__stats">
+                        <div class="stat-item">
+                            <span class="stat-num">Design</span>
+                            <span class="stat-desc">Розроблюю дизайн</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">Frontend</span>
+                            <span class="stat-desc">Створюю візуал</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">Backend</span>
+                            <span class="stat-desc">Реалізую логіку</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills" id="skills">
+            <h2 class="section-title" data-i18n="skills.title">Навички</h2>
+            <div class="skills__grid">
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">01</span>
+                        <h3 data-i18n="skills.frontend.title">Frontend</h3>
+                    </div>
+                    <p data-i18n="skills.frontend.text">HTML5, CSS3 (SCSS), JavaScript ES6+, React.js, GSAP, Canvas API</p>
+                </div>
+        
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">02</span>
+                        <h3 data-i18n="skills.backend.title">Backend & DB</h3>
+                    </div>
+                    <p data-i18n="skills.backend.text">C++, C#, Python, PHP, SQL (MySQL/PostgreSQL), REST API</p>
+                </div>
+        
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">03</span>
+                        <h3 data-i18n="skills.gamedev.title">Software & Games</h3>
+                    </div>
+                    <p data-i18n="skills.gamedev.text">Unity Engine, Desktop Apps Development, OOP, Game Logic</p>
+                </div>
+        
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">04</span>
+                        <h3 data-i18n="skills.tools.title">Tools & Skills</h3>
+                    </div>
+                    <p data-i18n="skills.tools.text">Git, GitHub, Figma, VS Code, Vite, Linux Terminal, SDLC</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">04</span>
+                        <h3 data-i18n="skills.tools.title">Tools & Skills</h3>
+                    </div>
+                    <p data-i18n="skills.tools.text">Git, GitHub, Figma, VS Code, Vite, Linux Terminal, SDLC</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card__header">
+                        <span class="skill-card__number">04</span>
+                        <h3 data-i18n="skills.tools.title">Tools & Skills</h3>
+                    </div>
+                    <p data-i18n="skills.tools.text">Git, GitHub, Figma, VS Code, Vite, Linux Terminal, SDLC</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <h2 class="section-title" data-i18n="projects.title">Проєкти</h2>
+            <div class="projects-grid" id="projects-container">
+                </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2 class="section-title" data-i18n="contact.title">Зв'язок</h2>
+            <div class="contact__content">
+                <h3 class="contact__subtitle" data-i18n="contact.subtitle">Маєте ідею чи проект?</h3>
+                <p class="contact__desc" data-i18n="contact.desc">
+                    Завжди відкрита до нових можливостей та цікавих колаборацій. Напишіть мені!
+                </p>
+                <div class="contact__links">
+                    <a href="mailto:oleksandra.yasinska.work@gmail.com" class="contact__btn">
+                        <span class="contact__icon">✉</span>
+                        <span class="contact__text">Написати на пошту</span>
+                    </a>
+                    <a href="https://t.me/Yasinska22" target="_blank" class="contact__btn contact__btn--telegram">
+                        <span class="contact__icon">✈</span>
+                        <span class="contact__text">Telegram</span>
+                    </a>
+                    <a href="https://github.com/OleksandraYasinska" target="_blank" class="contact__btn contact__btn--github">
+                        <span class="contact__icon">🐙</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> — Yasinska Olexandra.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/particles.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
